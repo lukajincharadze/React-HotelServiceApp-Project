@@ -58,7 +58,7 @@ function CreateCabinForm() {
   const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
-      toast.success("New cabin succesfully created");
+      toast.success("New cabin succesfullu created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
       reset();
     },
@@ -148,7 +148,6 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Cabin photo">
-        <Label htmlFor="image">Cabin photo</Label>
         <FileInput id="image" accept="image/*" />
       </FormRow>
 
