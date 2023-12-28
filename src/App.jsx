@@ -1,10 +1,4 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyles from "./styles/GlobalStyles";
@@ -22,6 +16,7 @@ import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      // staleTime: 60 * 1000,
       staleTime: 0,
     },
   },
@@ -33,16 +28,10 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
 
       <GlobalStyles />
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <AppLayout>
-                <Navigate to="dashboard" replace />
-              </AppLayout>
-            }
-          >
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
             <Route path="cabins" element={<Cabins />} />
@@ -54,7 +43,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Toaster
         position="top-center"
         gutter={12}
