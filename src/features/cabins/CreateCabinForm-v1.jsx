@@ -13,7 +13,6 @@ import { createCabin } from "../../services/apiCabins";
 
 function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
-
   const { errors } = formState;
 
   const queryClient = useQueryClient();
@@ -21,7 +20,7 @@ function CreateCabinForm() {
   const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createCabin,
     onSuccess: () => {
-      toast.success("New cabin succesfullu created");
+      toast.success("New cabin successfully created");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
       reset();
     },

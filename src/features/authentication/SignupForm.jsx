@@ -3,7 +3,6 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
-import { signup } from "../../services/apiAuth";
 import { useSignup } from "./useSignup";
 
 // Email regex: /\S+@\S+\.\S+/
@@ -58,10 +57,9 @@ function SignupForm() {
           disabled={isLoading}
           {...register("password", {
             required: "This field is required",
-
             minLength: {
               value: 8,
-              message: "Password needs a minumum of 8 characters",
+              message: "Password needs a minimum of 8 characters",
             },
           })}
         />

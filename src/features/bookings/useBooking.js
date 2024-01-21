@@ -14,5 +14,6 @@ export function useBooking() {
     queryFn: () => getBooking(bookingId),
     retry: false,
   });
+
   return { isLoading, error, booking };
 }

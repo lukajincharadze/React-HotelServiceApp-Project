@@ -7,13 +7,13 @@ import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
 import Spinner from "../../ui/Spinner";
-import Checkbox from "../../ui/CheckBox";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "../bookings/useBooking";
 import { useEffect, useState } from "react";
-import { useCheckin } from "./useCheckin";
+import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
+import { useCheckin } from "./useCheckin";
 import { useSettings } from "../settings/useSettings";
 
 const Box = styled.div`
@@ -97,11 +97,12 @@ function CheckinBooking() {
           disabled={confirmPaid || isCheckingIn}
           id="confirm"
         >
-          I confirm that {guests.fullName} has paid the total amount of
+          I confirm that {guests.fullName} has paid the total amount of{" "}
           {!addBreakfast
             ? formatCurrency(totalPrice)
-            : `${formatCurrency(totalPrice + optionalBreakfastPrice)}
-                (${formatCurrency(totalPrice)} + ${formatCurrency(
+            : `${formatCurrency(
+                totalPrice + optionalBreakfastPrice
+              )} (${formatCurrency(totalPrice)} + ${formatCurrency(
                 optionalBreakfastPrice
               )})`}
         </Checkbox>

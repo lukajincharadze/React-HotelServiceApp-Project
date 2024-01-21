@@ -34,6 +34,7 @@ const FilterButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
-
-import { formatDistanceFromNow } from "../../utils/helpers";
 import {
   HiArrowDownOnSquare,
   HiArrowUpOnSquare,
@@ -13,10 +11,11 @@ import { useNavigate } from "react-router-dom";
 import Tag from "../../ui/Tag";
 import Table from "../../ui/Table";
 import Modal from "../../ui/Modal";
-import ConfirmDelete from "../../ui/ConfirmDelete";
 import Menus from "../../ui/Menus";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 import { formatCurrency } from "../../utils/helpers";
+import { formatDistanceFromNow } from "../../utils/helpers";
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 
@@ -103,7 +102,7 @@ function BookingRow({
           <Menus.List id={bookingId}>
             <Menus.Button
               icon={<HiEye />}
-              onClick={navigate(`/bookings/${bookingId}`)}
+              onClick={() => navigate(`/bookings/${bookingId}`)}
             >
               See details
             </Menus.Button>
@@ -137,11 +136,7 @@ function BookingRow({
           <ConfirmDelete
             resourceName="booking"
             disabled={isDeleting}
-            onConfirm={() =>
-              deleteBooking(bookingId, {
-                onSettled: () => navigate(-1),
-              })
-            }
+            onConfirm={() => deleteBooking(bookingId)}
           />
         </Modal.Window>
       </Modal>

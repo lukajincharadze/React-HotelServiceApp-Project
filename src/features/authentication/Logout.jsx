@@ -5,6 +5,7 @@ import SpinnerMini from "../../ui/SpinnerMini";
 
 function Logout() {
   const { logout, isLoading } = useLogout();
+
   return (
     <ButtonIcon disabled={isLoading} onClick={logout}>
       {!isLoading ? <HiArrowRightOnRectangle /> : <SpinnerMini />}
